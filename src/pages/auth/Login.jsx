@@ -8,10 +8,9 @@ import {
   Typography,
   Container,
 } from "@mui/material";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import { useForm, Controller } from "react-hook-form";
-import ReactCodeInput from "react-code-input";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useSnackbar } from "notistack";
@@ -35,11 +34,11 @@ export default function Login() {
   } = useForm({
     defaultValues: {
       email: "",
+      password: "",
     },
   });
   const lang = Cookies.get("i18next") || "en";
 
-  const input1 = useRef();
   const navigate = useNavigate();
 
   const [location, setLocation] = useState({ latitude: null, longitude: null });
@@ -70,8 +69,8 @@ export default function Login() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            password: input1.current.state.value,
             email: data.email,
+            password: data.password,
             long: location?.longitude,
             lat: location?.latitude,
           }),
@@ -147,9 +146,25 @@ export default function Login() {
               <InputLabel sx={{ marginBottom: "6px", fontSize: "13px" }}>
                 {t("password")}
               </InputLabel>
-              <Box sx={{ direction: "rtl" }}>
-                <ReactCodeInput type="number" fields={4} ref={input1} />
-              </Box>
+              <Controller
+                name="password"
+                control={control}
+                render={({ field }) => (
+                  <TextField type="password" {...field} fullWidth />
+                )}
+                {...register("password", {
+                  required: "password Address is required",
+                })}
+              />
+              {errors.password?.type === "required" && (
+                <Typography
+                  color="error"
+                  role="alert"
+                  sx={{ fontSize: "13px", marginTop: "6px" }}
+                >
+                  {t("required")}
+                </Typography>
+              )}
             </Box>
 
             <Button
