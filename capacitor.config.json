@@ -1,0 +1,8 @@
+{
+  "appId": "io.ionic.moalime_app",
+  "appName": "moalime_app",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "cordova": {}
+}
