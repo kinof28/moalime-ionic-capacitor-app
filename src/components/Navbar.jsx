@@ -330,7 +330,7 @@ function Navbar(props) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, ml: 2, display: { md: "none" } }}
+            sx={{ mx: 1, display: { md: "none" } }}
           >
             <MenuIcon />
           </IconButton>
