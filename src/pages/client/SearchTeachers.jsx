@@ -121,7 +121,9 @@ export default function SearchTeachers() {
 
   return (
     <Navbar>
-      <Container sx={{ marginBottom: "40px", marginTop: "120px" }}>
+      <Container
+        sx={{ marginBottom: "40px", marginTop: "120px", overflowX: "hidden" }}
+      >
         <Grid container spacing={3}>
           <Grid item xs={12} md={9}>
             <Box sx={{ marginBottom: "20px" }}>

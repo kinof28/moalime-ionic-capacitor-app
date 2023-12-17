@@ -12,8 +12,10 @@ export default function HeaderSingleTeacher({ teacher }) {
   const { t } = useTranslation();
 
   return (
-    <Paper sx={{ padding: "24px", marginY: "30px" }}>
-      <ReactPlayer url={teacher?.videoLink} width="100%" />
+    <Paper sx={{ padding: "12px", marginY: "20px" }}>
+      {teacher?.videoLink && (
+        <ReactPlayer url={teacher?.videoLink} width="100%" />
+      )}
       {teacher?.F2FSessionStd?.discount > 0 && (
         <Box sx={{ backgroundColor: "#e2efff", mb: 2, p: 0.2 }}>
           <Typography textAlign={"center"}>
@@ -22,10 +24,10 @@ export default function HeaderSingleTeacher({ teacher }) {
           </Typography>
         </Box>
       )}
-      <Box sx={{ marginTop: "30px", display: "flex", columnGap: "20px" }}>
+      <Box sx={{ marginTop: "15px", display: "flex", columnGap: "15px" }}>
         <Avatar
           src={`${process.env.REACT_APP_API_KEY}images/${teacher?.image}`}
-          sx={{ width: "141px", height: "141px" }}
+          sx={{ width: "75px", height: "75px" }}
         />
         <Box>
           <Typography
@@ -67,7 +69,7 @@ export default function HeaderSingleTeacher({ teacher }) {
           >
             <SpeakerNotesIcon sx={{ fontSize: "16px", color: "#d5d5d5" }} />
             <Typography
-              sx={{ color: "#4f4f51", fontSize: "14px", fontWeight: "bold" }}
+              sx={{ color: "#4f4f51", fontSize: "12px", fontWeight: "bold" }}
             >
               {t("certifiedTeacher")}:{" "}
             </Typography>

@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Paper } from "@mui/material";
+import { Box, Button, Container, Grid, Paper } from "@mui/material";
 import React from "react";
 import AboutSingleTeacher from "../../components/client/singleTeacher/AboutSingleTeacher";
 import AvailablitySingleTeacher from "../../components/client/singleTeacher/AvailablitySingleTeacher";
@@ -74,8 +74,14 @@ export default function SingleTeacher() {
         <Loading />
       ) : (
         <Container sx={{ marginBottom: "40px", marginTop: "80px" }}>
-          <Grid container spacing={3}>
-            <Grid item md={12} lg={8}>
+          <Grid container spacing={1}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                width: "100%",
+              }}
+            >
               <HeaderSingleTeacher teacher={data?.data} />
               <AboutSingleTeacher teacher={data?.data} />
               <StdeuntsTypeSingleTeacher teacher={data?.data} />
@@ -83,7 +89,7 @@ export default function SingleTeacher() {
               <RatingTeacher teacher={data?.data} />
               <PayingTeacher teacher={data?.data} />
               <ResumeSingleTeacher teacher={data?.data} />
-            </Grid>
+            </Box>
             <Grid item md={12} lg={4}>
               <Paper sx={{ padding: "24px 12px", marginY: "30px" }}>
                 <Button
