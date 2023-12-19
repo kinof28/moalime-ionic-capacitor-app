@@ -21,8 +21,6 @@ import { loginParent } from "../../redux/parentSlice";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 
-import { Geolocation } from "@capacitor/geolocation";
-
 export default function Login() {
   const dispatch = useDispatch();
   const { closeSnackbar, enqueueSnackbar } = useSnackbar();
@@ -46,22 +44,22 @@ export default function Login() {
   const [location, setLocation] = useState({ latitude: null, longitude: null });
 
   useEffect(() => {
-    // window.navigator.geolocation.getCurrentPosition(
-    //   (position) => {
-    //     setLocation({
-    //       latitude: position.coords.latitude,
-    //       longitude: position.coords.longitude,
-    //     });
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // );
-    const getCoordinates = async () => {
-      const coordinates = await Geolocation.getCurrentPosition();
-      console.log("Current position:", coordinates);
-    };
-    getCoordinates();
+    window.navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setLocation({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    // const getCoordinates = async () => {
+    //   const coordinates = await Geolocation.getCurrentPosition();
+    //   console.log("Current position:", coordinates);
+    // };
+    // getCoordinates();
   }, []);
 
   async function onSubmit(data) {
