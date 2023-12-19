@@ -4,27 +4,30 @@ import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { Box } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router";
 
+const APIKey = process.env.REACT_APP_GOOGLE_API_KEY;
 const MapBrowsing = () => {
   const { token, student } = useSelector((state) => state.student);
-  console.log(student);
   const { data, loading } = useStudentMap(student?.id, token);
   const { t } = useTranslation();
   const lang = Cookies.get("i18next") || "en";
+  const navigate = useNavigate();
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+    googleMapsApiKey: APIKey,
   });
 
   const pushRoute = (id) => {
-    window.open(`https://moalime.com/teacher/${id}`, "_blank");
+    // window.open(`https://moalime.com/teacher/${id}`, "_blank");
+    navigate("/teacher/" + id);
   };
 
   return (
     <>
       {isLoaded && !loading && (
-        <Box width="100%" height="100vh">
+        <Box width="100%" height="100vh" sx={{ marginTop: "79px" }}>
           <GoogleMap
             mapContainerStyle={{
               width: "100%",
