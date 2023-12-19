@@ -15,6 +15,7 @@ import { useForm, Controller } from "react-hook-form";
 import currencies from "../../data/currencies";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import { Browser } from "@capacitor/browser";
 
 export default function PayNow() {
   const { t } = useTranslation();
@@ -57,7 +58,7 @@ export default function PayNow() {
         setLoad(false);
         throw new Error("failed occured");
       }
-      window.location.replace(resData.data);
+      await Browser.open({ url: resData.data });
     } catch (err) {
       console.log(err);
     }
