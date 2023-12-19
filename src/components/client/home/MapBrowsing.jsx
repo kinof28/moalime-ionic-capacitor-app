@@ -7,8 +7,8 @@ import Cookies from "js-cookie";
 
 const MapBrowsing = () => {
   const { token, student } = useSelector((state) => state.student);
+  console.log(student);
   const { data, loading } = useStudentMap(student?.id, token);
-  console.log("data: ", data);
   const { t } = useTranslation();
   const lang = Cookies.get("i18next") || "en";
 
