@@ -49,8 +49,10 @@ import { useSocialMedia } from "../hooks/useSocialMedia";
 const drawerWidth = 240;
 
 const ImageLogo = styled("img")({
-  width: "110px",
-  height: "50px",
+  width: "65px",
+  height: "25px",
+  objectFit: "cover",
+  padding: 5,
 });
 
 const ImageCall = styled("img")({
@@ -322,7 +324,9 @@ function Navbar(props) {
     .map((obj) => obj.link);
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box
+      sx={{ display: "flex", alignItems: "baseline", justifyContent: "center" }}
+    >
       <AppBar component="nav">
         <Toolbar>
           <IconButton
@@ -576,7 +580,10 @@ function Navbar(props) {
                   marginBottom: "12px",
                 }}
               >
-                <SearchIcon />
+                <Typography sx={{ fontSize: "8px" }}>
+                  {t("search_for_teachers")}
+                </Typography>
+                <SearchIcon sx={{ fontSize: "20px" }} />
               </Box>
             </Link>
             <ChangeLanguage lang={lang} />
