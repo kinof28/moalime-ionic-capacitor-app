@@ -51,9 +51,15 @@ export default function ChangeLanguage({ lang }) {
             height={20}
             width={30}
           />
-          <Typography sx={{ fontSize: "14px", fontWeight: "600" }}>
+          {/* <Typography
+            sx={{
+              fontSize: "14px",
+              fontWeight: "600",
+              display: { xs: "none" },
+            }}
+          >
             {languages.find((l) => l.code === lang).name}
-          </Typography>
+          </Typography> */}
         </Box>
       </IconButton>
       <Menu
@@ -78,7 +84,6 @@ export default function ChangeLanguage({ lang }) {
                 sx={{
                   fontSize: "14px",
                   fontWeight: "600",
-                  display: { md: "none" },
                 }}
               >
                 {lang.name}

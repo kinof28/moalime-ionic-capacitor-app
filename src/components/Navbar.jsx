@@ -49,8 +49,8 @@ import { useSocialMedia } from "../hooks/useSocialMedia";
 const drawerWidth = 240;
 
 const ImageLogo = styled("img")({
-  width: "65px",
-  height: "25px",
+  // width: "65px",
+  height: "30px",
   objectFit: "cover",
   padding: 5,
 });
@@ -334,7 +334,7 @@ function Navbar(props) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mx: 1, display: { md: "none" } }}
+            sx={{ display: { md: "none" } }}
           >
             <MenuIcon />
           </IconButton>
@@ -577,13 +577,12 @@ function Navbar(props) {
                   alignItems: "center",
                   justifyContent: "center",
                   color: "white",
-                  marginBottom: "12px",
                 }}
               >
-                <Typography sx={{ fontSize: "8px" }}>
+                <Typography sx={{ fontSize: "10px" }}>
                   {t("search_for_teachers")}
                 </Typography>
-                <SearchIcon sx={{ fontSize: "20px" }} />
+                <SearchIcon />
               </Box>
             </Link>
             <ChangeLanguage lang={lang} />
