@@ -25,7 +25,19 @@ export default function LandingJoin() {
           <Grid item xs={12} sm={8} md={3} lg={4} sx={{ margin: "auto" }}>
             <Image src={group} />
           </Grid>
-          <Grid item xs={12} md={9} lg={8}>
+          <Grid
+            item
+            xs={12}
+            md={9}
+            lg={8}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "center",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <Typography
               sx={{
                 fontSize: { md: "26px", xs: "18px" },
@@ -43,7 +55,7 @@ export default function LandingJoin() {
             </Typography>
             <Button
               variant="contained"
-              sx={{ marginTop: "16px" }}
+              sx={{ marginTop: "16px", maxWidth: "fit-content" }}
               onClick={() => navigate("/login")}
             >
               {t("becometeacher")}
