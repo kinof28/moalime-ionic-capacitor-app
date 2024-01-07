@@ -17,7 +17,7 @@ export default function Landing() {
       {/* <LandingTestimonials/> */}
       <LandingReasons />
       <LandingJoin />
-      <DownloadApp />
+      {/* <DownloadApp /> */}
       <LinksFooter />
       <Footer />
     </Navbar>

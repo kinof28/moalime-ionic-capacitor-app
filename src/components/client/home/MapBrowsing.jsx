@@ -20,7 +20,6 @@ const MapBrowsing = () => {
   });
 
   const pushRoute = (id) => {
-    // window.open(`https://moalime.com/teacher/${id}`, "_blank");
     navigate("/teacher/" + id);
   };
 

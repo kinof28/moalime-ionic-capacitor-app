@@ -21,7 +21,7 @@ export default function Home() {
       <HomeWorks />
       <HomeAbout />
       <HomeQuestions />
-      <DownloadApp />
+      {/* <DownloadApp /> */}
       <LinksFooter />
       <Footer />
     </Navbar>
