@@ -206,7 +206,13 @@ export default function DetailsBook() {
                   </Typography>
                 )}
               </Box>
-              <Box sx={{ display: "flex", gap: 3 }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexWrap: { xs: "wrap", md: "nowrap" },
+                  gap: { md: 3 },
+                }}
+              >
                 <Box sx={{ marginBottom: "30px", width: "100%" }}>
                   <InputLabel sx={{ marginBottom: "6px", fontSize: "13px" }}>
                     {t("lessonDate")}
@@ -240,10 +246,6 @@ export default function DetailsBook() {
                     name="time"
                     control={control}
                     render={({ field }) => (
-                      // <Box sx={{ display: "flex" }}>
-                      //   <TextField type="date" {...field} fullWidth />
-                      //   <TextField type="time" {...field} fullWidth />
-                      // </Box>
                       <TextField type="time" {...field} fullWidth />
                     )}
                     {...register("time", {

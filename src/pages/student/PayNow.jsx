@@ -69,10 +69,10 @@ export default function PayNow() {
       <Navbar />
       <Box
         sx={{
-          marginTop: "120px",
-          width: "500px",
+          marginTop: "70px",
           maxWidth: "100%",
           marginX: "auto",
+          padding: "20px",
         }}
       >
         <Typography

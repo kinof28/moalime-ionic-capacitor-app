@@ -90,7 +90,7 @@ export default function SingleTeacher() {
               <PayingTeacher teacher={data?.data} />
               <ResumeSingleTeacher teacher={data?.data} />
             </Box>
-            <Grid item md={12} lg={4}>
+            <Grid item md={12} lg={4} sx={{ width: "100%" }}>
               <Paper sx={{ padding: "24px 12px", marginY: "30px" }}>
                 <Button
                   variant="contained"
