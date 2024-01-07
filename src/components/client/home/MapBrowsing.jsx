@@ -26,7 +26,7 @@ const MapBrowsing = () => {
   return (
     <>
       {isLoaded && !loading && (
-        <Box width="100%" height="100vh" sx={{ marginTop: "79px" }}>
+        <Box width="100%" height="100vh" sx={{ marginTop: "60px" }}>
           <GoogleMap
             mapContainerStyle={{
               width: "100%",
