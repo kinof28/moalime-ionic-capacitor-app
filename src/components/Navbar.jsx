@@ -350,6 +350,26 @@ function Navbar(props) {
               <ImageLogo src={logoImage} />
             </Link>
           </Box>
+          {teacher && (
+            <Box
+              sx={{
+                padding: "4px",
+                backgroundColor: "#fc5a5a",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: "50%",
+                cursor: "pointer",
+                marginX: { xs: "4px", sm: "1.5rem" },
+                display: { md: "none", xs: "flex" },
+              }}
+              onClick={() => navigate("/teacher/notifications")}
+            >
+              <Badge badgeContent={notSeen} color="success">
+                <NotificationsIcon sx={{ fontSize: "20px" }} />
+              </Badge>
+            </Box>
+          )}
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
@@ -430,8 +450,7 @@ function Navbar(props) {
               <Stack alignItems={"center"} direction="row" gap="12px">
                 <Box
                   sx={{
-                    width: "35px",
-                    height: "35px",
+                    padding: "5px",
                     backgroundColor: "#fc5a5a",
                     display: "flex",
                     justifyContent: "center",
@@ -458,8 +477,7 @@ function Navbar(props) {
                   >
                     <Box
                       sx={{
-                        width: "35px",
-                        height: "35px",
+                        padding: "5px",
                         backgroundColor: "#ffffff33",
                         display: "flex",
                         justifyContent: "center",
@@ -577,6 +595,7 @@ function Navbar(props) {
                   alignItems: "center",
                   justifyContent: "center",
                   color: "white",
+                  textAlign: lang === "en" ? "left" : "right",
                 }}
               >
                 <Typography sx={{ fontSize: "10px" }}>
