@@ -6,8 +6,8 @@
   "webDir": "build",
   "cordova": {},
   "plugins": {
-    "PushNotifications": {
-      "presentationOptions": ["badge", "sound", "alert"]
+    "LocalNotifications": {
+      "iconColor": "#488AFF"
     }
   }
 }
