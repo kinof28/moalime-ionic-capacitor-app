@@ -1,25 +1,10 @@
-import {
-  Box,
-  Divider,
-  Grid,
-  Paper,
-  Stack,
-  Typography,
-  styled,
-} from "@mui/material";
+import { Box, Divider, Paper, Stack, Typography, styled } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import ContactPerson from "../../components/reusableUi/ContactPerson";
 import Conversaition from "../../components/student/Conversaition";
 import StudentLayout from "../../components/student/StudentLayout";
-import {
-  collection,
-  query,
-  onSnapshot,
-  where,
-  doc,
-  orderBy,
-} from "firebase/firestore";
+import { collection, query, onSnapshot, where, doc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";

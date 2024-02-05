@@ -24,7 +24,6 @@ const Image = styled("img")({
 export default function TeacherMessages() {
   const { t } = useTranslation();
   const [conversaition, setConversaition] = useState([]);
-
   const { teacher } = useSelector((state) => state.teacher);
 
   useEffect(() => {
@@ -37,7 +36,8 @@ export default function TeacherMessages() {
       querySnapshot.forEach((doc) => {
         conv.push({ ...doc.data(), id: doc.id });
       });
-      setConversaition(conv.sort((a, b) => b.lastmessage - a.lastmessage));
+      let temp = conv.sort((a, b) => b.lastmessage - a.lastmessage);
+      setConversaition(temp);
     });
     return () => unsubscribe();
   }, [teacher.id]);

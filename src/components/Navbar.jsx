@@ -45,6 +45,7 @@ import call from "../images/callsvg.svg";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../firebase";
 import { useSocialMedia } from "../hooks/useSocialMedia";
+import { LocalNotifications } from "@capacitor/local-notifications";
 
 const drawerWidth = 240;
 
@@ -86,6 +87,7 @@ function Navbar(props) {
   }
 
   const [notSeen, setNotSeen] = React.useState(0);
+
   React.useEffect(() => {
     if (teacher) {
       const q = query(
@@ -102,6 +104,76 @@ function Navbar(props) {
       return () => unsubscribe();
     }
   }, [teacher]);
+
+  React.useEffect(() => {
+    if (teacher) {
+      let initialized = false;
+      const q = query(
+        collection(db, "chats"),
+        where("teacherId", "==", `${teacher.id}`)
+      );
+      const unsubscribe = onSnapshot(q, async (querySnapshot) => {
+        let conv = [];
+        querySnapshot.forEach((doc) => {
+          conv.push({ ...doc.data(), id: doc.id });
+        });
+        let temp = conv.sort((a, b) => b.lastmessage - a.lastmessage);
+        if (initialized) {
+          try {
+            await LocalNotifications.schedule({
+              notifications: [
+                {
+                  id: temp.length,
+                  title: "new message from a student",
+                  body: temp[0].messages[temp[0].messages.length - 1].text,
+                },
+              ],
+            });
+          } catch (error) {
+            console.log("some error went in local notification setting", error);
+          }
+        } else {
+          initialized = true;
+        }
+      });
+      return () => unsubscribe();
+    }
+  }, [teacher]);
+
+  React.useEffect(() => {
+    if (student) {
+      let initialized = false;
+      const q = query(
+        collection(db, "chats"),
+        where("studentId", "==", `${student.id}`)
+      );
+      const unsubscribe = onSnapshot(q, async (querySnapshot) => {
+        let conv = [];
+        querySnapshot.forEach((doc) => {
+          conv.push({ ...doc.data(), id: doc.id });
+        });
+        let temp = conv.sort((a, b) => b.lastmessage - a.lastmessage);
+        if (initialized) {
+          try {
+            await LocalNotifications.schedule({
+              notifications: [
+                {
+                  id: temp.length,
+                  title: "new message from a teacher",
+                  body: temp[0].messages[temp[0].messages.length - 1].text,
+                },
+              ],
+            });
+          } catch (error) {
+            console.log("some error went in local notification setting", error);
+          }
+        } else {
+          initialized = true;
+        }
+      });
+      return () => unsubscribe();
+    }
+  }, [student]);
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
