@@ -32,7 +32,6 @@ const MapBrowsing = () => {
   const [teacher, setTeacher] = useState(null);
   const [subjects, setSubjects] = useState([]);
   const handleOpen = (teacher) => {
-    console.log(teacher);
     setOpen(true);
     setTeacher(teacher);
     setSubjects(getSubjects(teacher));
@@ -86,7 +85,6 @@ const MapBrowsing = () => {
                       "subjects"
                     )}: ${subjects.join("\n")}
                 `}
-                    // onClick={() => pushRoute(teacher.id)}
                     onClick={() => handleOpen(teacher)}
                   />
                 );
@@ -124,7 +122,18 @@ const MapBrowsing = () => {
                 </Typography>
               </Box>
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                {t("subjects") + ": " + subjects?.join(",\t")}
+                <span style={{ fontWeight: "bold" }}>
+                  {t("subjects") + ": "}
+                </span>
+                {subjects?.join(",\t")}
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mb: 1 }}>
+                <span style={{ fontWeight: "bold" }}>{t("city") + ": "}</span>
+                {teacher?.city},
+                <span style={{ fontWeight: "bold" }}>
+                  {t("country") + ": "}
+                </span>
+                {teacher?.country}
               </Typography>
               <Button
                 variant="contained"
